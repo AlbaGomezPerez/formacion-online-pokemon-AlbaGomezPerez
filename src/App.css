@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+/*CHARACTERlIST*/
+.cartoonsList{
+  list-style: none;
+}
+
+.cartoon{
+  background-color: aquamarine;
+  margin-top: 20px;
+}
