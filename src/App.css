@@ -10,24 +10,18 @@
 }
 
 /*CHARACTERlIST*/
-.cartoonsList{
+.pokemonList{
   list-style: none;
   display: flex;
   flex-wrap: wrap;
 }
-.cartoon{}
-.cartoonName{
+
+.pokemonName{
   font-size: 20px;
   text-align: left;
   padding-left: 10px;
   font-weight: bold;
   text-transform: capitalize;
-}
-
-.cartoonUrl{
-  background-color: palegoldenrod;
-  margin-top: 5px;
-  margin-right: 20px;
 }
 
 .pokemonImage{
@@ -45,14 +39,14 @@
   margin-bottom: 30px;
 }
 
-.type{
+.pokemonType{
   margin: 1px;
   border: 1px solid black;
   border-radius: 10px;
   padding: 3px;
 }
 
-.types{
+.pokemonTypes{
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
