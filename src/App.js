@@ -83,7 +83,7 @@ class App extends React.Component {
             return (
                 <div className="App">
                     <header>
-                        <h1 className="Title">Hola</h1>
+                        <h1 className="pokemon-title">My favorite's Pokemon</h1>
                     </header>
                     <main>
                         <Filters

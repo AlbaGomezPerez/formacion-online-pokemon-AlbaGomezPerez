@@ -13,17 +13,17 @@ const CharacterList = props => {
                 .map((item, index) => {
                     return (
                         <li className="cartoon" key={index}>
-                            <div className="pokemonImage">
-                                <img src={item.sprites.front_default} alt={item.name}/>
+                                <img className="pokemonImage" src={item.sprites.front_default} alt={item.name}/>
+                            <div className="infoContainer">
+                                <div className="cartoonName"> {item.name}</div>
+                                <div className="weight">{item.id}</div>
+                                <div className="types">
+                                    {item.types.map(typeInfo => {
+                                        return (
+                                            <span className="type">{typeInfo.type.name}</span>
+                                        )
+                                    })}
                             </div>
-                            <div className="cartoonName"> {item.name}</div>
-                            <div className="weight">{item.id}</div>
-                            <div className="types">
-                                {item.types.map(typeInfo => {
-                                    return (
-                                        <span>{typeInfo.type.name}</span>
-                                    )
-                                })}
                             </div>
                         </li>
                     );
