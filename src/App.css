@@ -5,9 +5,18 @@
 /*CHARACTERlIST*/
 .cartoonsList{
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
 }
-
-.cartoon{
+.cartoon{}
+.cartoonName{
   background-color: aquamarine;
   margin-top: 20px;
+  margin-right: 20px;
+}
+
+.cartoonUrl{
+  background-color: palegoldenrod;
+  margin-top: 5px;
+  margin-right: 20px;
 }
