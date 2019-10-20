@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {GetCharacters, GetCharactersDetails} from './GetCharacters';
+import {GetCharacters} from './GetCharacters';
 import CharacterList from "./CharacterList";
 import Filters from "./Filter";
 
@@ -28,7 +28,6 @@ class App extends React.Component {
     getCartoons() {
         GetCharacters()
             .then(data => {
-                console.log(data.name);
                 // for (let item of data.results) {
                 //     GetCharactersDetails(item.url).then(pokemonData => {
                 //         this.setState({

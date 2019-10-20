@@ -11,9 +11,9 @@ const Filters = props => {
     );
 };
 
-// Filters.propTypes = {
-//     SearchName: PropTypes.string,
-//     getNameInput: PropTypes.func
-// };
+Filters.propTypes = {
+    SearchName: PropTypes.string,
+    getNameInput: PropTypes.func
+};
 
 export default Filters;
