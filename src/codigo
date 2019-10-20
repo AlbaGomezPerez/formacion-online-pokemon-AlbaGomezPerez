@@ -1,0 +1,27 @@
+for (let item of data.results) {
+    //                 this.setState({
+    //                     AllCharacters: [...this.state.AllCharacters, {
+    //                         name: item.name,
+    //                         id: 1,
+    //                         sprites: {
+    //                             front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    //                         },
+    //                         types: [
+    //                             {
+    //                                 slot: 2,
+    //                                 type: {
+    //                                     url: "http://pokeapi.salestock.net/api/v2/type/4/",
+    //                                     name: "poison"
+    //                                 }
+    //                             },
+    //                             {
+    //                                 slot: 1,
+    //                                 type: {
+    //                                     url: "http://pokeapi.salestock.net/api/v2/type/12/",
+    //                                     name: "grass"
+    //                                 }
+    //                             }
+    //                         ]
+    //                     }]
+    //                 })
+    //             }
