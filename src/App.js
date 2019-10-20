@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {GetCharacters} from './GetCharacters';
+import {GetCharacters, GetCharactersDetails} from './GetCharacters';
 import CharacterList from "./CharacterList";
 import Filters from "./Filter";
 
@@ -28,41 +28,41 @@ class App extends React.Component {
     getCartoons() {
         GetCharacters()
             .then(data => {
-                // for (let item of data.results) {
-                //     GetCharactersDetails(item.url).then(pokemonData => {
-                //         this.setState({
-                //             AllCharacters: [...this.state.AllCharacters, pokemonData]
-                //         })
-                //     })
-                //
-                // }
                 for (let item of data.results) {
-                    this.setState({
-                        AllCharacters: [...this.state.AllCharacters, {
-                            name: item.name,
-                            id: 1,
-                            sprites: {
-                                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-                            },
-                            types: [
-                                {
-                                    slot: 2,
-                                    type: {
-                                        url: "http://pokeapi.salestock.net/api/v2/type/4/",
-                                        name: "poison"
-                                    }
-                                },
-                                {
-                                    slot: 1,
-                                    type: {
-                                        url: "http://pokeapi.salestock.net/api/v2/type/12/",
-                                        name: "grass"
-                                    }
-                                }
-                            ]
-                        }]
+                    GetCharactersDetails(item.url).then(pokemonData => {
+                        this.setState({
+                            AllCharacters: [...this.state.AllCharacters, pokemonData]
+                        })
                     })
+
                 }
+    //             for (let item of data.results) {
+    //                 this.setState({
+    //                     AllCharacters: [...this.state.AllCharacters, {
+    //                         name: item.name,
+    //                         id: 1,
+    //                         sprites: {
+    //                             front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    //                         },
+    //                         types: [
+    //                             {
+    //                                 slot: 2,
+    //                                 type: {
+    //                                     url: "http://pokeapi.salestock.net/api/v2/type/4/",
+    //                                     name: "poison"
+    //                                 }
+    //                             },
+    //                             {
+    //                                 slot: 1,
+    //                                 type: {
+    //                                     url: "http://pokeapi.salestock.net/api/v2/type/12/",
+    //                                     name: "grass"
+    //                                 }
+    //                             }
+    //                         ]
+    //                     }]
+    //                 })
+    //             }
             });
     }
 
