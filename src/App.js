@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {GetCharacters, GetCharactersDetails} from './GetCharacters';
+import {GetCharacters, GetCharactersDetails} from './services/GetCharacters';
 import CharacterList from "./CharacterList";
 import Filters from "./Filter";
 
@@ -14,7 +14,6 @@ class App extends React.Component {
         };
 
         this.getNameInput = this.getNameInput.bind(this);
-
     }
 
 
