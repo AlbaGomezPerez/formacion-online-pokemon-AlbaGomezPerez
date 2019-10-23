@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import {GetCharacters, GetCharactersDetails} from './services/GetCharacters';
-import CharacterList from "./CharacterList";
-import Filters from "./Filter";
+import Home from "./Home";
+import CharacterDetailCard from "./CharacterDetailCard";
 
 class App extends React.Component {
     constructor(props) {
@@ -35,68 +36,52 @@ class App extends React.Component {
                     })
 
                 }
-    //             for (let item of data.results) {
-    //                 this.setState({
-    //                     AllCharacters: [...this.state.AllCharacters, {
-    //                         name: item.name,
-    //                         id: 1,
-    //                         sprites: {
-    //                             front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-    //                         },
-    //                         types: [
-    //                             {
-    //                                 slot: 2,
-    //                                 type: {
-    //                                     url: "http://pokeapi.salestock.net/api/v2/type/4/",
-    //                                     name: "poison"
-    //                                 }
-    //                             },
-    //                             {
-    //                                 slot: 1,
-    //                                 type: {
-    //                                     url: "http://pokeapi.salestock.net/api/v2/type/12/",
-    //                                     name: "grass"
-    //                                 }
-    //                             }
-    //                         ]
-    //                     }]
-    //                 })
-    //             }
             });
     }
 
-        getNameInput(event){
-            const SearchName = event.currentTarget.value;
-            this.setState({
-                SearchName: SearchName
-            });
+    getNameInput(event) {
+        const SearchName = event.currentTarget.value;
+        this.setState({
+            SearchName: SearchName
+        });
 
-        }
+    }
 
-        // Se ejecuta 5 veces, con valores desde paso desde 0 hasta 4.
+    // Se ejecuta 5 veces, con valores desde paso desde 0 hasta 4.
 
-        render()
-        {
-            const {AllCharacters, SearchName} = this.state;
-            return (
-                <div className="App">
-                    <header>
-                        <h1 className="pokemon-title">My favorite's Pokemon</h1>
-                    </header>
-                    <main>
-                        <Filters
-                            SearchName={SearchName}
-                            getNameInput={this.getNameInput}
+    render() {
+        const {AllCharacters, SearchName} = this.state;
+        return (
+            <div className="App">
+                <header>
+                    <h1 className="pokemon-title">My favorite's Pokemon</h1>
+                </header>
+                <main>
+                    <Switch>
+                        <Route
+                            exact
+                            path="/"
+                            render={routerProps => (
+                                <Home
+                                    AllCharacters={AllCharacters}
+                                    SearchName={SearchName}
+                                    getNameInput={this.getNameInput}
+                                />
+                            )}
                         />
-                        <CharacterList
-                            AllCharacters={AllCharacters}
-                            SearchName={SearchName}
-                            />
-                    </main>
-                </div>
-            );
-        }
-        ;
-    }
+                        <Route
+                            path="/pokemon/:id"
+                            render={routerProps => (
+                                <CharacterDetailCard
+                                    Match={routerProps.match}
+                                    AllCharacters={AllCharacters}
+                                />
+                            )}
+                        />
+                    </Switch>
+                </main>
+            </div>
+        );
+    };
+}
 export default App;
-

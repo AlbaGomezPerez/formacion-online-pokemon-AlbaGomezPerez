@@ -1,5 +1,6 @@
 /*FILTER Y MAP*/
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
@@ -15,7 +16,11 @@ const CharacterList = props => {
                                 <img className="pokemonImage" src={item.sprites.front_default} alt={item.name}/>
                             <div className="pokemonId">{item.id}</div>
                             <div className="infoContainer">
-                                <div className="pokemonName"> {item.name}</div>
+                                <div className="pokemonName">
+                                    <Link className="CardLink" to={"/pokemon/" + item.id}>
+                                        {item.name}
+                                    </Link>
+                                </div>
                                 <div className="pokemonTypes">
                                     {item.types.map((typeInfo, index) => {
                                         return (
