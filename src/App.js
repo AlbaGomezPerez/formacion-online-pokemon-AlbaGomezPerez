@@ -73,7 +73,7 @@ class App extends React.Component {
                             )}
                         />
                         <Route
-                            path="/character/:id"
+                            path="/pokemon/:id"
                             render={routerProps => (
                                 <CharacterDetailCard
                                     Match={routerProps.match}
