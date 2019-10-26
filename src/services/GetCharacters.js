@@ -8,12 +8,11 @@ const GetCharacters = () => {
 
 
 /*SEGUNDA PETICIÓN. Detalles pokemons*/
-const GetCharactersDetails = (pokemonDetailUrl) => {
-    return fetch(pokemonDetailUrl)
-        .then(response => response.json());
-};
+// const GetCharactersDetails = (pokemonDetailUrl) => {
+//     return fetch(pokemonDetailUrl)
+//         .then(response => response.json());
+// };
 
 
 
 export {GetCharacters};
-export {GetCharactersDetails};

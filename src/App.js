@@ -1,9 +1,8 @@
 import React from 'react';
+import {GetCharacters} from './services/GetCharacters';
+import CharacterList from "./components/CharacterList";
+import Filters from "./components/Filter";
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
-import {GetCharacters, GetCharactersDetails} from './services/GetCharacters';
-import Home from "./Home";
-import CharacterDetailCard from "./CharacterDetailCard";
 
 class App extends React.Component {
     constructor(props) {
@@ -28,18 +27,22 @@ class App extends React.Component {
     getCartoons() {
         GetCharacters()
             .then(data => {
-                for (let item of data.results) {
-                    GetCharactersDetails(item.url).then(pokemonData => {
-                        this.setState({
-                            AllCharacters: [...this.state.AllCharacters, pokemonData]
-                        })
-                    })
-
-                }
-            });
+                const promise = data.results.map (item => {
+                    return fetch(item.url)
+                        .then(response => response.json());
+                });
+                return Promise.all(promise);
+            })
+            .then(info => {
+                this.setState({
+                    AllCharacters: info,
+                });
+            })
     }
 
-    getNameInput(event) {
+
+    //función input.
+    getNameInput(event){
         const SearchName = event.currentTarget.value;
         this.setState({
             SearchName: SearchName
@@ -47,9 +50,8 @@ class App extends React.Component {
 
     }
 
-    // Se ejecuta 5 veces, con valores desde paso desde 0 hasta 4.
-
-    render() {
+    render()
+    {
         const {AllCharacters, SearchName} = this.state;
         return (
             <div className="App">
@@ -57,31 +59,19 @@ class App extends React.Component {
                     <h1 className="pokemon-title">My favorite's Pokemon</h1>
                 </header>
                 <main>
-                    <Switch>
-                        <Route
-                            exact
-                            path="/"
-                            render={routerProps => (
-                                <Home
-                                    AllCharacters={AllCharacters}
-                                    SearchName={SearchName}
-                                    getNameInput={this.getNameInput}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/pokemon/:id"
-                            render={routerProps => (
-                                <CharacterDetailCard
-                                    Match={routerProps.match}
-                                    AllCharacters={AllCharacters}
-                                />
-                            )}
-                        />
-                    </Switch>
+                    <Filters
+                        SearchName={SearchName}
+                        getNameInput={this.getNameInput}
+                    />
+                    <CharacterList
+                        AllCharacters={AllCharacters}
+                        SearchName={SearchName}
+                    />
                 </main>
             </div>
         );
-    };
+    }
+    ;
 }
 export default App;
+
