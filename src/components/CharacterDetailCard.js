@@ -3,18 +3,34 @@ import { Link } from "react-router-dom";
 
 
 const CharacterDetailCard = props => {
-    const {AllCharacters, Match} = props;
+    const {Match, AllCharacters} = props;
     const CharacterId = parseInt(Match.params.id);
 
-    return(
-        <div>
-            <div>{CharacterId}</div>
-            <Link to={"/"}>
-                Vuelve atrás
-            </Link>
-        </div>
+    return (
+        <ul className="CartoonsDetail">
+            {AllCharacters
+                .filter(myCartoon => myCartoon.id === CharacterId)
+                .map(item => {
+                    return (
+                        <div className="cardDetail" key={item.id}>
+                            <Link className="DetailLink" to={"/"}>
+                                <ul className="ContainerCharacterDetail">
+                                    <li className="PaintCharacterDetail">Hola
+                                        <div className="ContainerFeaturesDetail">
+                                            <div className="CharacterNameDetail">{item.name}</div>
+                                            <div className="BackContainer">
+                                                <p className="BackText">Go back</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </Link>
+                        </div>
+                    )
+                })}
+        </ul>
     )
 
-}
+};
 
 export default CharacterDetailCard;

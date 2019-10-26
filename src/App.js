@@ -1,7 +1,8 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import {GetCharacters} from './services/GetCharacters';
-import CharacterList from "./components/CharacterList";
-import Filters from "./components/Filter";
+import Home from "./components/Home";
+import CharacterDetailCard from "./components/CharacterDetailCard";
 import './App.css';
 
 class App extends React.Component {
@@ -59,14 +60,28 @@ class App extends React.Component {
                     <h1 className="pokemon-title">My favorite's Pokemon</h1>
                 </header>
                 <main>
-                    <Filters
-                        SearchName={SearchName}
-                        getNameInput={this.getNameInput}
-                    />
-                    <CharacterList
-                        AllCharacters={AllCharacters}
-                        SearchName={SearchName}
-                    />
+                    <Switch>
+                        <Route
+                            exact
+                            path="/"
+                            render={routerProps => (
+                                <Home
+                                    AllCharacters={AllCharacters}
+                                    SearchName={SearchName}
+                                    getNameInput={this.getNameInput}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/character/:id"
+                            render={routerProps => (
+                                <CharacterDetailCard
+                                    Match={routerProps.match}
+                                    AllCharacters={AllCharacters}
+                                />
+                            )}
+                        />
+                    </Switch>
                 </main>
             </div>
         );
