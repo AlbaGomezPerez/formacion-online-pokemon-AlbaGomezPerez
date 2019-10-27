@@ -21,7 +21,7 @@ const CharacterList = props => {
                                 <img className="pokemonImage" src={item.sprites.front_default} alt={item.name}/>
                             <div className="pokemonId">{item.id}</div>
                             <div className="infoContainer">
-                                <div className="pokemonEvolution">Evolución:</div>
+                                <div className="pokemonEvolution">Evolución:{item.evolvesData != null ? item.evolvesData.name : 'no'}</div>
                                 <div className="pokemonTypes">
                                     {item.types.map((typeInfo, index) => {
                                         return (

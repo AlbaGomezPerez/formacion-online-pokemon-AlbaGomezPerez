@@ -30,8 +30,19 @@ class App extends React.Component {
             .then(data => {
                 const promise = data.results.map (item => {
                     return fetch(item.url)
-                        .then(response => response.json());
+                        .then(response => response.json())
+                        .then(pokemonData => {
+                            let speciesData= fetch(pokemonData.species.url)
+                                .then(response => response.json())
+                                .then(evolutionData => {
+                                        return evolutionData.evolves_from_species;
+                                });
+                            pokemonData.evolvesData=speciesData;
+                            return pokemonData;
+                    });
+
                 });
+
                 return Promise.all(promise);
             })
             .then(info => {
@@ -89,4 +100,6 @@ class App extends React.Component {
     ;
 }
 export default App;
+
+
 
