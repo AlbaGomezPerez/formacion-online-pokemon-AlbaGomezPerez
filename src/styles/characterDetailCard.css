@@ -1,0 +1,115 @@
+.cartoonsDetail{
+
+}
+
+.cardDetail{
+    height: 100%;
+}
+.detailLink{
+    background-color: blue;
+    text-decoration: none;
+    color: black;
+}
+.containerCharacterDetail{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.paintCharacterDetail{
+    display: flex;
+    text-align: right;
+    height: 350px;
+    width: 900px;
+    margin: 0;
+    padding: 0;
+    background: -webkit-linear-gradient(top, rgba(255,255,0,1) 0%,
+        rgba(255,255,0,1) 7%,
+        rgba(117,189,209,1) 48%,
+        rgba(124,178,206,1) 53%,
+        #556f8b 100%);
+}
+.pokemonImage{
+    background: none !important;
+    text-align: right;
+    height: 250px;
+}
+
+.containerFeaturesDetail{
+}
+
+.containerName{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.characterNameDetail{
+    background-color: #556f8b;
+    font-size: 30px;
+    width: 890px;
+    height: 40px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.characterWeightDetail{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+.characterHeightDetail{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+.characterSkillDetail{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+.characterEvolutionDetail{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+.pokemonTypes{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+.pokemonType{
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+}
+
+.backContainer{
+    text-align: right;
+    margin-left: 600px;
+}
+
+.backContainer :after{
+    content: "\f060";
+    font-weight: bold;
+    font-family: "Font Awesome 5 Pro", sans-serif;
+    color: #30498b;
+    font-size: 40px;
+    padding-left: 14px;
+    margin-bottom: 50px;
+}

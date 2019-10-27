@@ -1,5 +1,5 @@
 /*PETICIÓN INICIAL*/
-const url = "http://pokeapi.salestock.net/api/v2/pokemon/?limit=4&offset=0";
+const url = "http://pokeapi.salestock.net/api/v2/pokemon/?limit=1&offset=0";
 
 const GetCharacters = () => {
     return fetch(url)

@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import './../styles/characterList.css';
 
 
 const CharacterList = props => {
@@ -13,13 +14,14 @@ const CharacterList = props => {
                 .map((item, index) => {
                     return (
                         <li className="pokemon" key={index}>
+                            <div className="pokemonName">
+                                <Link className="cardLink" to={"/pokemon/" + item.id}> {item.name}
+                                </Link>
+                            </div>
                                 <img className="pokemonImage" src={item.sprites.front_default} alt={item.name}/>
                             <div className="pokemonId">{item.id}</div>
                             <div className="infoContainer">
-                                <div className="pokemonName">
-                                    <Link className="CardLink" to={"/pokemon/" + item.id}> {item.name}
-                                    </Link>
-                                </div>
+                                <div className="pokemonEvolution">Evolución:</div>
                                 <div className="pokemonTypes">
                                     {item.types.map((typeInfo, index) => {
                                         return (
