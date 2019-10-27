@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {GetCharacters} from './services/GetCharacters';
 import Home from "./components/Home";
 import CharacterDetailCard from "./components/CharacterDetailCard";
@@ -72,6 +73,12 @@ class App extends React.Component {
                 </header>
                 <main>
                     <Switch>
+                        <TransitionGroup>
+                            <CSSTransition
+                                appear={true}
+                                timeout={500}
+                                classNames="fade"
+                            >
                         <Route
                             exact
                             path="/"
@@ -83,6 +90,14 @@ class App extends React.Component {
                                 />
                             )}
                         />
+                            </CSSTransition>
+                        </TransitionGroup>
+                                <TransitionGroup>
+                                    <CSSTransition
+                                        appear={true}
+                                        timeout={500}
+                                        classNames="fade"
+                                    >
                         <Route
                             path="/pokemon/:id"
                             render={routerProps => (
@@ -92,6 +107,8 @@ class App extends React.Component {
                                 />
                             )}
                         />
+                                    </CSSTransition>
+                                </TransitionGroup>
                     </Switch>
                 </main>
             </div>
