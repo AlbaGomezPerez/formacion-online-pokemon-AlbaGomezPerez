@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-import CharacterCard from "./CharacterCard";
 
 
 const CharacterList = props => {
@@ -19,10 +18,6 @@ const CharacterList = props => {
                             <div className="infoContainer">
                                 <div className="pokemonName">
                                     <Link className="CardLink" to={"/pokemon/" + item.id}> {item.name}
-                                            <CharacterCard>
-                                                name={item.name}
-                                                id={item.id}/>
-                                            </CharacterCard>
                                     </Link>
                                 </div>
                                 <div className="pokemonTypes">
