@@ -18,7 +18,6 @@ const CharacterDetailCard = props => {
             {AllCharacters
                 .filter(myCartoon => myCartoon.id === CharacterId)
                 .map(item => {
-                    console.log(item.name);
                     return (
                         <div className="cardDetail" key={item.id}>
                             <Link className="detailLink" to={"/"}>
@@ -31,8 +30,7 @@ const CharacterDetailCard = props => {
                                         <div className="containerFeaturesDetail">
                                             <div className="characterWeightDetail">Weight: {item.weight}</div>
                                             <div className="characterHeightDetail">Height: {item.height}</div>
-                                            <div className="characterSkillDetail">Habilidades</div>
-                                            <div className="characterEvolutionDetail">Evoluciones</div>
+                                            <div className="characterEvolutionDetail">{item.evolvesData != null ? 'Evolution: ' + item.evolvesData.name : ''}</div>
                                             <div className="pokemonTypes">
                                                 {item.types.map((typeInfo, index) => {
                                                     return (
@@ -45,6 +43,15 @@ const CharacterDetailCard = props => {
                                             </div>
                                         </div>
                                     </li>
+                                </ul>
+                                <ul className="pokemonAbilities">
+                                    {item.abilities.map((abilitiesData, index) => {
+                                        return(
+                                            <li>
+                                                <li className="pokemonAbility" key={index}>{abilitiesData.ability.name}</li>
+                                            </li>
+                                    )
+                                    })}
                                 </ul>
                             </Link>
                         </div>

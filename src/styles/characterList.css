@@ -4,6 +4,16 @@
     flex-wrap: wrap;
 }
 
+
+.pokemonName :before {
+    content: "\f05a";
+    font-weight: bold;
+    font-family: "Font Awesome 5 Pro", sans-serif;
+    font-size: 30px;
+    color: yellow;
+    padding-right: 10px;
+}
+
 .cardLink{
     text-decoration: none;
     color: black;
@@ -58,7 +68,7 @@
     top: -15%;
 }
 
-.pokemonType{
+.pokemonType {
     margin: 1px;
     border: 1px solid black;
     border-radius: 10px;
@@ -66,16 +76,27 @@
 }
 
 .pokemonTypes{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: space-between;
-    width: 100px;
+    width: 10px;
+    margin: 0;
     padding-left: 10px;
 }
 
 .pokemonEvolution{
     text-align: left;
     padding-left: 10px;
-    margin-bottom: 10px;
-    padding-top: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+    font-size: 20px;
+    height: 50px;
+    position: relative;
+    top: -20px;
+    background: -webkit-linear-gradient(top, rgba(255,255,0,1) 0%,
+    rgba(255,255,0,1) 7%,
+    rgba(117,189,209,1) 48%,
+    rgba(124,178,206,1) 53%,
+    #556f8b 100%);
 }
