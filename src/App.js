@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {GetCharacters} from './services/GetCharacters';
 import Home from "./components/Home";
 import CharacterDetailCard from "./components/CharacterDetailCard";
@@ -32,13 +31,10 @@ class App extends React.Component {
                 const promise = data.results.map (item => {
                     return fetch(item.url)
                         .then(response => response.json())
-                        .then(pokemonData => {
-                            let speciesData= fetch(pokemonData.species.url)
-                                .then(response => response.json())
-                                .then(evolutionData => {
-                                        return evolutionData.evolves_from_species;
-                                });
-                            pokemonData.evolvesData=speciesData;
+                        .then(async pokemonData => {
+                            const response = await fetch(pokemonData.species.url);
+                            const json = await response.json();
+                            pokemonData.evolvesData=json.evolves_from_species;
                             return pokemonData;
                     });
 
@@ -73,12 +69,6 @@ class App extends React.Component {
                 </header>
                 <main>
                     <Switch>
-                        <TransitionGroup>
-                            <CSSTransition
-                                appear={true}
-                                timeout={500}
-                                classNames="fade"
-                            >
                         <Route
                             exact
                             path="/"
@@ -90,14 +80,6 @@ class App extends React.Component {
                                 />
                             )}
                         />
-                            </CSSTransition>
-                        </TransitionGroup>
-                                <TransitionGroup>
-                                    <CSSTransition
-                                        appear={true}
-                                        timeout={500}
-                                        classNames="fade"
-                                    >
                         <Route
                             path="/pokemon/:id"
                             render={routerProps => (
@@ -107,8 +89,6 @@ class App extends React.Component {
                                 />
                             )}
                         />
-                                    </CSSTransition>
-                                </TransitionGroup>
                     </Switch>
                 </main>
             </div>

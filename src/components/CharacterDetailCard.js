@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './../styles/characterDetailCard.css';
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 
 const CharacterDetailCard = props => {
     const {Match, AllCharacters} = props;
     const CharacterId = parseInt(Match.params.id);
     return (
+        <TransitionGroup>
+            <CSSTransition
+                appear={true}
+                timeout={500}
+                classNames="fade"
+            >
         <ul className="cartoonsDetail">
             {AllCharacters
                 .filter(myCartoon => myCartoon.id === CharacterId)
@@ -44,6 +51,8 @@ const CharacterDetailCard = props => {
                     )
                 })}
         </ul>
+            </CSSTransition>
+        </TransitionGroup>
     )
 
 };
